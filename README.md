@@ -187,3 +187,134 @@ INSERT INTO Ms_Parfum (idParfum, nama_parfum, stok_tersedia)
 ---
 
 ## Implementation Transaction
+
+### Create Procedures InsertTrxLaundry
+```sql
+DELIMITER $$
+
+CREATE PROCEDURE InsertTrxLaundry(
+    IN p_no_struk CHAR(6),
+    IN p_idParfum CHAR(6),
+    IN p_idPelanggan CHAR(6),
+    IN p_idKasir CHAR(6),
+    IN p_idToko CHAR(6),
+    IN p_layanan1 CHAR(6),
+    IN p_kuantitas_layanan1 INT,
+    IN p_layanan2 CHAR(6),
+    IN p_kuantitas_layanan2 INT,
+    IN p_layanan3 CHAR(6),
+    IN p_kuantitas_layanan3 INT,
+    IN p_dp INT
+)
+BEGIN
+    -- Deklarasi variabel lokal
+    DECLARE p_stok_tersedia INT;
+    DECLARE p_harga_layanan1, p_harga_layanan2, p_harga_layanan3 INT DEFAULT 0;
+    DECLARE p_total_harga_layanan1, p_total_harga_layanan2, p_total_harga_layanan3 INT DEFAULT 0;
+    DECLARE p_grand_total INT DEFAULT 0;
+    DECLARE p_total_kuantitas INT DEFAULT 0;
+
+    -- Label untuk prosedur
+    transaksi_block: BEGIN
+
+        -- Nilai default jika parameter NULL
+        IF p_layanan2 IS NULL THEN
+            SET p_layanan2 = '';
+        END IF;
+
+        IF p_kuantitas_layanan2 IS NULL THEN
+            SET p_kuantitas_layanan2 = 0;
+        END IF;
+
+        IF p_layanan3 IS NULL THEN
+            SET p_layanan3 = '';
+        END IF;
+
+        IF p_kuantitas_layanan3 IS NULL THEN
+            SET p_kuantitas_layanan3 = 0;
+        END IF;
+
+        -- Mulai transaksi
+        START TRANSACTION;
+
+        -- Hitung grand total dan total kuantitas
+        IF p_layanan1 IS NOT NULL AND p_kuantitas_layanan1 > 0 THEN
+            SELECT harga INTO p_harga_layanan1
+            FROM Ms_Layanan
+            WHERE idLayanan = p_layanan1;
+            SET p_total_harga_layanan1 = p_harga_layanan1 * p_kuantitas_layanan1;
+            SET p_total_kuantitas = p_total_kuantitas + p_kuantitas_layanan1;
+        END IF;
+
+        IF p_layanan2 IS NOT NULL AND p_kuantitas_layanan2 > 0 THEN
+            SELECT harga INTO p_harga_layanan2
+            FROM Ms_Layanan
+            WHERE idLayanan = p_layanan2;
+            SET p_total_harga_layanan2 = p_harga_layanan2 * p_kuantitas_layanan2;
+            SET p_total_kuantitas = p_total_kuantitas + p_kuantitas_layanan2;
+        END IF;
+
+        IF p_layanan3 IS NOT NULL AND p_kuantitas_layanan3 > 0 THEN
+            SELECT harga INTO p_harga_layanan3
+            FROM Ms_Layanan
+            WHERE idLayanan = p_layanan3;
+            SET p_total_harga_layanan3 = p_harga_layanan3 * p_kuantitas_layanan3;
+            SET p_total_kuantitas = p_total_kuantitas + p_kuantitas_layanan3;
+        END IF;
+
+        SET p_grand_total = p_total_harga_layanan1 + p_total_harga_layanan2 + p_total_harga_layanan3;
+
+        -- Insert ke Trx_Laundry terlebih dahulu
+        INSERT INTO Trx_Laundry (
+            no_struk, idParfum, idPelanggan, idKasir, idToko,
+            grand_total, dp, sisa, tgl_transaksi
+        )
+        VALUES (
+            p_no_struk, p_idParfum, p_idPelanggan, p_idKasir, p_idToko,
+            p_grand_total, p_dp, p_grand_total - p_dp, CURRENT_TIMESTAMP
+        );
+
+        -- Insert ke Trx_Layanan
+        IF p_layanan1 IS NOT NULL AND p_kuantitas_layanan1 > 0 THEN
+            INSERT INTO Trx_Layanan (no_struk, idLayanan, kuantitas, total_harga)
+            VALUES (p_no_struk, p_layanan1, p_kuantitas_layanan1, p_total_harga_layanan1);
+        END IF;
+
+        IF p_layanan2 IS NOT NULL AND p_kuantitas_layanan2 > 0 THEN
+            INSERT INTO Trx_Layanan (no_struk, idLayanan, kuantitas, total_harga)
+            VALUES (p_no_struk, p_layanan2, p_kuantitas_layanan2, p_total_harga_layanan2);
+        END IF;
+
+        IF p_layanan3 IS NOT NULL AND p_kuantitas_layanan3 > 0 THEN
+            INSERT INTO Trx_Layanan (no_struk, idLayanan, kuantitas, total_harga)
+            VALUES (p_no_struk, p_layanan3, p_kuantitas_layanan3, p_total_harga_layanan3);
+        END IF;
+
+        -- Cek stok parfum
+        SELECT stok_tersedia INTO p_stok_tersedia
+        FROM Ms_Parfum
+        WHERE idParfum = p_idParfum;
+
+        IF p_stok_tersedia < p_total_kuantitas THEN
+            ROLLBACK;
+            SELECT 'Transaksi Gagal: Stok Parfum Tidak Mencukupi.' AS message;
+            LEAVE transaksi_block;
+        END IF;
+
+        -- Update stok parfum
+        UPDATE Ms_Parfum
+        SET stok_tersedia = stok_tersedia - p_total_kuantitas
+        WHERE idParfum = p_idParfum;
+
+        -- Commit transaksi
+        COMMIT;
+
+        SELECT 'Transaksi berhasil' AS Status, p_no_struk AS No_Struk;
+
+    END transaksi_block; -- Label akhir prosedur
+END$$
+
+DELIMITER ;
+```
+<img width="1226" alt="image" src="https://github.com/user-attachments/assets/e4f05d39-8159-41a8-a050-7c0fbf6b7e25" />
+
