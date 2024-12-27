@@ -1,6 +1,20 @@
-# VTwoLaundry Database Schema
+# Database Project for Class G
 
-Welcome to the **VTwoLaundry Database Schema** project! This repository contains the SQL scripts to create and manage the database schema for a laundry management system. The schema is designed with modularity and clarity, ensuring scalability and easy maintenance.
+## Description
+This project is created to fulfill the Database Project assignment by Group 10. We implemented a database system for "VTwoLaundry" using MySQL.
+
+## Group Members
+- **Selsa Trikartika** (4523210102)
+- **Chaerul Cahyadi** (4523210120)
+- **Avryzel Alifian Hakim** (4523210121)
+
+### Supervisor
+**Adi Wahyu Pribadi, S.Si., M.Kom**
+
+### Study Program
+Bachelor of Informatics Engineering, Universitas Pancasila, Academic Year 2024/2025
+
+---
 
 ## Features
 - **Customer Management**: Keep track of customers with their personal details.
