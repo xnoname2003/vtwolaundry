@@ -63,6 +63,8 @@ CREATE TABLE Ms_Toko (
     no_tlp BIGINT NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 ```
+<img width="1107" alt="image" src="https://github.com/user-attachments/assets/1a1f26e4-6c07-421b-899a-80e8ca9e0576" />
+
 
 #### Perfume Table (`Ms_Parfum`)
 ```sql
@@ -72,6 +74,8 @@ CREATE TABLE Ms_Parfum (
     stok_tersedia INT NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 ```
+<img width="1126" alt="image" src="https://github.com/user-attachments/assets/0197ce00-7915-4e61-8d6f-22ebc68ad2f9" />
+
 
 #### Laundry Transaction Table (`Trx_Laundry`)
 ```sql
@@ -91,6 +95,8 @@ CREATE TABLE Trx_Laundry (
   FOREIGN KEY (idToko) REFERENCES Ms_Toko(idToko)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 ```
+<img width="1193" alt="image" src="https://github.com/user-attachments/assets/5f7efd0a-a509-49b1-9f9f-b8a8a982962a" />
+
 
 #### Service Transaction Table (`Trx_Layanan`)
 ```sql
@@ -104,38 +110,71 @@ CREATE TABLE Trx_Layanan (
   FOREIGN KEY (idLayanan) REFERENCES Ms_Layanan(idLayanan)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 ```
+<img width="1197" alt="image" src="https://github.com/user-attachments/assets/4918dd09-517b-48f5-85dc-645cf83b548b" />
+
 
 ---
 
-## Getting Started
+## Insert Data Master
 
-### Prerequisites
-- MySQL Server
-- MySQL Workbench or any SQL client
+### Customer Table (`Ms_Pelanggan`)
+```sql
+INSERT INTO Ms_Pelanggan (idPelanggan, nama_pelanggan)
+    VALUES
+('PLG001', 'Ahmad Setiawan'), ('PLG002', 'Dewi Lestari'), ('PLG003', 'Budi Santoso'), ('PLG004', 'Citra Maharani'),('PLG005', 'Eka Pratama'),
+('PLG006', 'Farah Indah'), ('PLG007', 'Gilang Permana'), ('PLG008', 'Hadi Saputra'), ('PLG009', 'Irma Dwi'), ('PLG010', 'Joko Rahmat'),
+('PLG011', 'Kurniawati Ayu'), ('PLG012', 'Lia Santika'), ('PLG013', 'Mario Budiman'), ('PLG014', 'Nina Maharani'), ('PLG015', 'Oki Kurniawan'),
+('PLG016', 'Putri Anjani'), ('PLG017', 'Rina Setiani'), ('PLG018', 'Satria Bima'), ('PLG019', 'Tina Handayani'), ('PLG020', 'Utami Lestari'); 
+```
 
-### Installation
-1. Clone this repository:
-   ```bash
-   git clone https://github.com/your-username/VTwoLaundry-DB.git
-   ```
-2. Open the SQL file in your preferred SQL client.
-3. Execute the scripts in order to set up the database and tables.
 
----
+### Cashier Table (`Ms_Kasir`)
+```sql
+INSERT INTO Ms_Kasir (idKasir, nama_kasir)
+    VALUES
+('KSR001', 'Dian Suryani'), ('KSR002', 'Rizky Permata'), ('KSR003', 'Edi Santoso'), ('KSR004', 'Faisal Anwar'), ('KSR005', 'Ika Nurul'),
+('KSR006', 'Beni Setiawan'), ('KSR007', 'Lutfi Ramadhan'), ('KSR008', 'Vina Lestari'), ('KSR009', 'Wawan Gunawan'), ('KSR010', 'Yuni Indah'),
+('KSR011', 'Nani Kurnia'), ('KSR012', 'Arif Widodo'), ('KSR013', 'Dewi Sartika'), ('KSR014', 'Fajar Maulana'), ('KSR015', 'Hendra Jaya'),
+('KSR016', 'Irfan Saputra'), ('KSR017', 'Maya Kusuma'), ('KSR018', 'Rina Nuraini'), ('KSR019', 'Taufik Rahman'), ('KSR020', 'Zahra Fadillah'); 
+```
 
-## Contributing
-We welcome contributions! Feel free to fork this repository, make your changes, and submit a pull request.
 
----
+### Service Table (`Ms_Layanan`)
+```sql
 
-## License
-This project is licensed under the MIT License. See the `LICENSE` file for more details.
+INSERT INTO Ms_Layanan (idLayanan, nama_layanan, satuan, harga)
+    VALUES
+('LYN001', 'Cuci Kering', 'Kg', 15000), ('LYN002', 'Cuci Basah', 'Kg', 10000), ('LYN003', 'Cuci Kering Lipat', 'Kg', 20000), ('LYN004', 'Setrika Saja', 'Kg', 8000),
+('LYN005', 'Dry Cleaning', 'Pcs', 25000), ('LYN006', 'Cuci Boneka', 'Pcs', 30000), ('LYN007', 'Cuci Karpet', 'Pcs', 50000), ('LYN008', 'Cuci Selimut', 'Pcs', 40000),
+('LYN009', 'Cuci Gordyn', 'Pcs', 60000), ('LYN010', 'Laundry Ekspres', 'Kg', 30000), ('LYN011', 'Laundry Regular', 'Kg', 12000), ('LYN012', 'Cuci Jaket', 'Pcs', 20000),
+('LYN013', 'Cuci Sepatu', 'Pcs', 15000), ('LYN014', 'Cuci Helm', 'Pcs', 12000), ('LYN015', 'Cuci Topi', 'Pcs', 10000), ('LYN016', 'Cuci Tas', 'Pcs', 25000),
+('LYN017', 'Cuci Baju Delicate', 'Kg', 40000), ('LYN018', 'Laundry Jas', 'Pcs', 35000), ('LYN019', 'Laundry Hotel', 'Kg', 50000), ('LYN020', 'Laundry Industrial', 'Kg', 80000); 
+```
 
----
 
-## Contact
-For questions or suggestions, feel free to open an issue or contact [Your Name](mailto:your-email@example.com).
+### Store Table (`Ms_Toko`)
+```sql
+INSERT INTO Ms_Toko (idToko, nama_toko, alamat, no_tlp)
+    VALUES
+('TOK001', 'Laundry Center 1', 'Jl. Mawar No.1', 6281234567890), ('TOK002', 'Laundry Center 2', 'Jl. Melati No.2', 6281234567891),
+('TOK003', 'Laundry Center 3', 'Jl. Anggrek No.3', 6281234567892), ('TOK004', 'Laundry Center 4', 'Jl. Kenanga No.4', 6281234567893),
+('TOK005', 'Laundry Center 5', 'Jl. Dahlia No.5', 6281234567894), ('TOK006', 'Laundry Center 6', 'Jl. Teratai No.6', 6281234567895),
+('TOK007', 'Laundry Center 7', 'Jl. Kemuning No.7', 6281234567896), ('TOK008', 'Laundry Center 8', 'Jl. Cempaka No.8', 6281234567897),
+('TOK009', 'Laundry Center 9', 'Jl. Bougenville No.9', 6281234567898), ('TOK010', 'Laundry Center 10', 'Jl. Kamboja No.10', 6281234567899),
+('TOK011', 'Laundry Center 11', 'Jl. Mawar No.11', 6281234567800), ('TOK012', 'Laundry Center 12', 'Jl. Melati No.12', 6281234567801),
+('TOK013', 'Laundry Center 13', 'Jl. Anggrek No.13', 6281234567802), ('TOK014', 'Laundry Center 14', 'Jl. Kenanga No.14', 6281234567803),
+('TOK015', 'Laundry Center 15', 'Jl. Dahlia No.15', 6281234567804), ('TOK016', 'Laundry Center 16', 'Jl. Teratai No.16', 6281234567805),
+('TOK017', 'Laundry Center 17', 'Jl. Kemuning No.17', 6281234567806), ('TOK018', 'Laundry Center 18', 'Jl. Cempaka No.18', 6281234567807),
+('TOK019', 'Laundry Center 19', 'Jl. Bougenville No.19', 6281234567808), ('TOK020', 'Laundry Center 20', 'Jl. Kamboja No.20', 6281234567809); 
+```
 
----
 
-Happy coding! ✨
+### Perfume Table (`Ms_Parfum`)
+```sql
+INSERT INTO Ms_Parfum (idParfum, nama_parfum, stok_tersedia)
+    VALUES
+('PRF001', 'Lavender', 100), ('PRF002', 'Rose', 80), ('PRF003', 'Jasmine', 120), ('PRF004', 'Ocean', 150), ('PRF005', 'Lemon', 90),
+('PRF006', 'Vanilla', 70), ('PRF007', 'Musk', 110), ('PRF008', 'Sandalwood', 50), ('PRF009', 'Mint', 130), ('PRF010', 'Citrus', 140),
+('PRF011', 'Pine', 60), ('PRF012', 'Amber', 85), ('PRF013', 'Cedarwood', 75), ('PRF014', 'Peach', 65), ('PRF015', 'Apple', 95),
+('PRF016', 'Strawberry', 115), ('PRF017', 'Grapefruit', 125), ('PRF018', 'Coconut', 55), ('PRF019', 'Cherry', 105), ('PRF020', 'Blueberry', 135);
+```
