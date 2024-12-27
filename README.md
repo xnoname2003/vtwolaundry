@@ -115,7 +115,7 @@ CREATE TABLE Trx_Layanan (
 
 ---
 
-## Insert Data Master
+## Insert 20 Rows Data Master
 
 ### Customer Table (`Ms_Pelanggan`)
 ```sql
@@ -126,6 +126,7 @@ INSERT INTO Ms_Pelanggan (idPelanggan, nama_pelanggan)
 ('PLG011', 'Kurniawati Ayu'), ('PLG012', 'Lia Santika'), ('PLG013', 'Mario Budiman'), ('PLG014', 'Nina Maharani'), ('PLG015', 'Oki Kurniawan'),
 ('PLG016', 'Putri Anjani'), ('PLG017', 'Rina Setiani'), ('PLG018', 'Satria Bima'), ('PLG019', 'Tina Handayani'), ('PLG020', 'Utami Lestari'); 
 ```
+<img width="1188" alt="image" src="https://github.com/user-attachments/assets/81e251fd-b15d-4f49-b884-7131da9b64b3" />
 
 
 ### Cashier Table (`Ms_Kasir`)
@@ -137,6 +138,7 @@ INSERT INTO Ms_Kasir (idKasir, nama_kasir)
 ('KSR011', 'Nani Kurnia'), ('KSR012', 'Arif Widodo'), ('KSR013', 'Dewi Sartika'), ('KSR014', 'Fajar Maulana'), ('KSR015', 'Hendra Jaya'),
 ('KSR016', 'Irfan Saputra'), ('KSR017', 'Maya Kusuma'), ('KSR018', 'Rina Nuraini'), ('KSR019', 'Taufik Rahman'), ('KSR020', 'Zahra Fadillah'); 
 ```
+<img width="1207" alt="image" src="https://github.com/user-attachments/assets/85144e79-29a8-4bed-93a6-280ca72bbc09" />
 
 
 ### Service Table (`Ms_Layanan`)
@@ -150,6 +152,7 @@ INSERT INTO Ms_Layanan (idLayanan, nama_layanan, satuan, harga)
 ('LYN013', 'Cuci Sepatu', 'Pcs', 15000), ('LYN014', 'Cuci Helm', 'Pcs', 12000), ('LYN015', 'Cuci Topi', 'Pcs', 10000), ('LYN016', 'Cuci Tas', 'Pcs', 25000),
 ('LYN017', 'Cuci Baju Delicate', 'Kg', 40000), ('LYN018', 'Laundry Jas', 'Pcs', 35000), ('LYN019', 'Laundry Hotel', 'Kg', 50000), ('LYN020', 'Laundry Industrial', 'Kg', 80000); 
 ```
+<img width="1204" alt="image" src="https://github.com/user-attachments/assets/ae0493ba-0159-4cde-8ceb-ad33a0d2b215" />
 
 
 ### Store Table (`Ms_Toko`)
@@ -167,6 +170,7 @@ INSERT INTO Ms_Toko (idToko, nama_toko, alamat, no_tlp)
 ('TOK017', 'Laundry Center 17', 'Jl. Kemuning No.17', 6281234567806), ('TOK018', 'Laundry Center 18', 'Jl. Cempaka No.18', 6281234567807),
 ('TOK019', 'Laundry Center 19', 'Jl. Bougenville No.19', 6281234567808), ('TOK020', 'Laundry Center 20', 'Jl. Kamboja No.20', 6281234567809); 
 ```
+<img width="1211" alt="image" src="https://github.com/user-attachments/assets/2d1faeee-3d85-49f8-92d4-984b6fc0ec1e" />
 
 
 ### Perfume Table (`Ms_Parfum`)
@@ -178,3 +182,8 @@ INSERT INTO Ms_Parfum (idParfum, nama_parfum, stok_tersedia)
 ('PRF011', 'Pine', 60), ('PRF012', 'Amber', 85), ('PRF013', 'Cedarwood', 75), ('PRF014', 'Peach', 65), ('PRF015', 'Apple', 95),
 ('PRF016', 'Strawberry', 115), ('PRF017', 'Grapefruit', 125), ('PRF018', 'Coconut', 55), ('PRF019', 'Cherry', 105), ('PRF020', 'Blueberry', 135);
 ```
+<img width="1196" alt="image" src="https://github.com/user-attachments/assets/23a06154-2964-4411-baac-bc87aa681f69" />
+
+---
+
+## Implementation Transaction
