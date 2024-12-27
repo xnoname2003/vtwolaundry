@@ -349,3 +349,14 @@ COMMIT;
 <img width="637" alt="image" src="https://github.com/user-attachments/assets/20f7efdb-a809-4674-a731-f1817f512223" />
 <img width="901" alt="image" src="https://github.com/user-attachments/assets/096d9991-b702-46ca-b7b3-c9e538bbfc88" />
 <img width="533" alt="image" src="https://github.com/user-attachments/assets/a5a55784-05b3-4ffb-bc1f-ba558e462520" />
+
+---
+
+## Error Scenario in Transaction
+
+```sql
+CALL InsertTrxLaundry('TRX021', 'PRF002', 'PLG019', 'KSR019', 'TOK001', 'LYN004', 50, NULL, 0, NULL, 0, 20000);
+```
+<img width="920" alt="image" src="https://github.com/user-attachments/assets/1d0bb251-f7d5-43d9-9cfa-7f3c92316830" />
+<img width="317" alt="image" src="https://github.com/user-attachments/assets/9a76e549-214f-4466-bfaa-018bb8c68a73" />
+
