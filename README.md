@@ -51,6 +51,8 @@ CREATE TABLE Ms_Layanan (
     harga INT NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 ```
+<img width="1142" alt="image" src="https://github.com/user-attachments/assets/2e5d0125-4a86-4441-ab99-26a542fb9b30" />
+
 
 #### Store Table (`Ms_Toko`)
 ```sql
