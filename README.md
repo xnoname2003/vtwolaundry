@@ -29,6 +29,8 @@ CREATE TABLE Ms_Pelanggan (
     nama_pelanggan VARCHAR(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 ```
+<img width="1095" alt="image" src="https://github.com/user-attachments/assets/8a35a813-3271-4e05-9dfc-f4cffa46d5ac" />
+
 
 #### Cashier Table (`Ms_Kasir`)
 ```sql
