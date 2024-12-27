@@ -39,6 +39,8 @@ CREATE TABLE Ms_Kasir (
     nama_kasir VARCHAR(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 ```
+<img width="993" alt="image" src="https://github.com/user-attachments/assets/baf5f2a0-1bde-4a2d-8d8e-3253e65a494d" />
+
 
 #### Service Table (`Ms_Layanan`)
 ```sql
