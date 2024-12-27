@@ -122,7 +122,7 @@ CREATE TABLE Trx_Layanan (
 
 ---
 
-## Insert 20 Rows Data Master
+## Input 20 Rows Data Master
 
 ### Customer Table (`Ms_Pelanggan`)
 ```sql
