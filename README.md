@@ -31,7 +31,6 @@ CREATE TABLE Ms_Pelanggan (
 ```
 <img width="1095" alt="image" src="https://github.com/user-attachments/assets/8a35a813-3271-4e05-9dfc-f4cffa46d5ac" />
 
-
 #### Cashier Table (`Ms_Kasir`)
 ```sql
 CREATE TABLE Ms_Kasir (
@@ -40,7 +39,6 @@ CREATE TABLE Ms_Kasir (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 ```
 <img width="993" alt="image" src="https://github.com/user-attachments/assets/baf5f2a0-1bde-4a2d-8d8e-3253e65a494d" />
-
 
 #### Service Table (`Ms_Layanan`)
 ```sql
@@ -53,7 +51,6 @@ CREATE TABLE Ms_Layanan (
 ```
 <img width="1142" alt="image" src="https://github.com/user-attachments/assets/2e5d0125-4a86-4441-ab99-26a542fb9b30" />
 
-
 #### Store Table (`Ms_Toko`)
 ```sql
 CREATE TABLE Ms_Toko (
@@ -65,7 +62,6 @@ CREATE TABLE Ms_Toko (
 ```
 <img width="1107" alt="image" src="https://github.com/user-attachments/assets/1a1f26e4-6c07-421b-899a-80e8ca9e0576" />
 
-
 #### Perfume Table (`Ms_Parfum`)
 ```sql
 CREATE TABLE Ms_Parfum (
@@ -75,7 +71,6 @@ CREATE TABLE Ms_Parfum (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 ```
 <img width="1126" alt="image" src="https://github.com/user-attachments/assets/0197ce00-7915-4e61-8d6f-22ebc68ad2f9" />
-
 
 #### Laundry Transaction Table (`Trx_Laundry`)
 ```sql
@@ -89,14 +84,13 @@ CREATE TABLE Trx_Laundry (
   dp INT,
   sisa INT,
   tgl_transaksi TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-  FOREIGN KEY (idParfum) REFERENCES Ms_Parfum(idParfum),
-  FOREIGN KEY (idPelanggan) REFERENCES Ms_Pelanggan(idPelanggan),
-  FOREIGN KEY (idKasir) REFERENCES Ms_Kasir(idKasir),
-  FOREIGN KEY (idToko) REFERENCES Ms_Toko(idToko)
+  FOREIGN KEY (idParfum) REFERENCES Ms_Parfum(idParfum) ON DELETE CASCADE,
+  FOREIGN KEY (idPelanggan) REFERENCES Ms_Pelanggan(idPelanggan) ON DELETE CASCADE,
+  FOREIGN KEY (idKasir) REFERENCES Ms_Kasir(idKasir) ON DELETE CASCADE,
+  FOREIGN KEY (idToko) REFERENCES Ms_Toko(idToko) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 ```
-<img width="1193" alt="image" src="https://github.com/user-attachments/assets/5f7efd0a-a509-49b1-9f9f-b8a8a982962a" />
-
+<img width="1204" alt="image" src="https://github.com/user-attachments/assets/05d7c7bb-5d79-4b88-b56b-7f7b763d777d" />
 
 #### Service Transaction Table (`Trx_Layanan`)
 ```sql
@@ -106,12 +100,11 @@ CREATE TABLE Trx_Layanan (
   idLayanan CHAR(6),
   kuantitas INT,
   total_harga INT,
-  FOREIGN KEY (no_struk) REFERENCES Trx_Laundry(no_struk),
-  FOREIGN KEY (idLayanan) REFERENCES Ms_Layanan(idLayanan)
+  FOREIGN KEY (no_struk) REFERENCES Trx_Laundry(no_struk) ON DELETE CASCADE,
+  FOREIGN KEY (idLayanan) REFERENCES Ms_Layanan(idLayanan) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 ```
-<img width="1197" alt="image" src="https://github.com/user-attachments/assets/4918dd09-517b-48f5-85dc-645cf83b548b" />
-
+<img width="1198" alt="image" src="https://github.com/user-attachments/assets/9d105634-55f2-461c-a0bf-b8bcf3265c69" />
 
 ---
 
@@ -128,7 +121,6 @@ INSERT INTO Ms_Pelanggan (idPelanggan, nama_pelanggan)
 ```
 <img width="1188" alt="image" src="https://github.com/user-attachments/assets/81e251fd-b15d-4f49-b884-7131da9b64b3" />
 
-
 ### Cashier Table (`Ms_Kasir`)
 ```sql
 INSERT INTO Ms_Kasir (idKasir, nama_kasir)
@@ -140,10 +132,8 @@ INSERT INTO Ms_Kasir (idKasir, nama_kasir)
 ```
 <img width="1207" alt="image" src="https://github.com/user-attachments/assets/85144e79-29a8-4bed-93a6-280ca72bbc09" />
 
-
 ### Service Table (`Ms_Layanan`)
 ```sql
-
 INSERT INTO Ms_Layanan (idLayanan, nama_layanan, satuan, harga)
     VALUES
 ('LYN001', 'Cuci Kering', 'Kg', 15000), ('LYN002', 'Cuci Basah', 'Kg', 10000), ('LYN003', 'Cuci Kering Lipat', 'Kg', 20000), ('LYN004', 'Setrika Saja', 'Kg', 8000),
@@ -153,7 +143,6 @@ INSERT INTO Ms_Layanan (idLayanan, nama_layanan, satuan, harga)
 ('LYN017', 'Cuci Baju Delicate', 'Kg', 40000), ('LYN018', 'Laundry Jas', 'Pcs', 35000), ('LYN019', 'Laundry Hotel', 'Kg', 50000), ('LYN020', 'Laundry Industrial', 'Kg', 80000); 
 ```
 <img width="1204" alt="image" src="https://github.com/user-attachments/assets/ae0493ba-0159-4cde-8ceb-ad33a0d2b215" />
-
 
 ### Store Table (`Ms_Toko`)
 ```sql
@@ -171,7 +160,6 @@ INSERT INTO Ms_Toko (idToko, nama_toko, alamat, no_tlp)
 ('TOK019', 'Laundry Center 19', 'Jl. Bougenville No.19', 6281234567808), ('TOK020', 'Laundry Center 20', 'Jl. Kamboja No.20', 6281234567809); 
 ```
 <img width="1211" alt="image" src="https://github.com/user-attachments/assets/2d1faeee-3d85-49f8-92d4-984b6fc0ec1e" />
-
 
 ### Perfume Table (`Ms_Parfum`)
 ```sql
@@ -359,4 +347,26 @@ CALL InsertTrxLaundry('TRX021', 'PRF002', 'PLG019', 'KSR019', 'TOK001', 'LYN004'
 ```
 <img width="920" alt="image" src="https://github.com/user-attachments/assets/1d0bb251-f7d5-43d9-9cfa-7f3c92316830" />
 <img width="317" alt="image" src="https://github.com/user-attachments/assets/9a76e549-214f-4466-bfaa-018bb8c68a73" />
+<img width="914" alt="image" src="https://github.com/user-attachments/assets/68ed4870-9dfb-4768-be74-c5754d9dc9f0" />
 
+---
+
+## Update Data Ms_Parfum
+
+```sql
+UPDATE Ms_Parfum
+    SET stok_tersedia = 200
+WHERE idParfum = 'PRF002';
+```
+<img width="549" alt="image" src="https://github.com/user-attachments/assets/7f42bdef-fea4-41f9-8182-0e79a6cff123" />
+<img width="511" alt="image" src="https://github.com/user-attachments/assets/074f6bcc-9bfd-4a69-8fbd-e985d1375631" />
+
+---
+
+## Delete Data Trx_Laundry
+
+```sql
+DELETE FROM Trx_Laundry WHERE no_struk = 'TRX020';
+```
+<img width="424" alt="image" src="https://github.com/user-attachments/assets/55810415-5767-4cdd-9562-8c454b951475" />
+<img width="941" alt="image" src="https://github.com/user-attachments/assets/dea70468-ac8a-4ce5-85e6-08227b3685b7" />
