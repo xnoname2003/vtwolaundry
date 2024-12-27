@@ -318,3 +318,34 @@ DELIMITER ;
 ```
 <img width="1226" alt="image" src="https://github.com/user-attachments/assets/e4f05d39-8159-41a8-a050-7c0fbf6b7e25" />
 
+---
+
+## Input 20 Rows to Relational Table Using Transaction
+
+```sql
+START TRANSACTION;
+CALL InsertTrxLaundry('TRX001', 'PRF001', 'PLG001', 'KSR001', 'TOK001', 'LYN001', 10, NULL, 0, NULL, 0, 20000);
+CALL InsertTrxLaundry('TRX002', 'PRF002', 'PLG002', 'KSR002', 'TOK002', 'LYN002', 5, 'LYN003', 3, NULL, 0, 15000);
+CALL InsertTrxLaundry('TRX003', 'PRF003', 'PLG003', 'KSR003', 'TOK003', 'LYN001', 8, 'LYN004', 2, NULL, 0, 18000);
+CALL InsertTrxLaundry('TRX004', 'PRF004', 'PLG004', 'KSR004', 'TOK001', 'LYN003', 7, NULL, 0, NULL, 0, 14000);
+CALL InsertTrxLaundry('TRX005', 'PRF005', 'PLG005', 'KSR005', 'TOK002', 'LYN004', 4, 'LYN002', 6, 'LYN001', 3, 22000);
+CALL InsertTrxLaundry('TRX006', 'PRF001', 'PLG006', 'KSR006', 'TOK003', 'LYN001', 6, NULL, 0, NULL, 0, 16000);
+CALL InsertTrxLaundry('TRX007', 'PRF002', 'PLG007', 'KSR007', 'TOK001', 'LYN003', 3, 'LYN002', 4, NULL, 0, 14000);
+CALL InsertTrxLaundry('TRX008', 'PRF003', 'PLG008', 'KSR008', 'TOK002', 'LYN002', 9, 'LYN004', 2, NULL, 0, 25000);
+CALL InsertTrxLaundry('TRX009', 'PRF004', 'PLG009', 'KSR009', 'TOK003', 'LYN001', 5, 'LYN003', 4, 'LYN002', 2, 30000);
+CALL InsertTrxLaundry('TRX010', 'PRF005', 'PLG010', 'KSR010', 'TOK001', 'LYN004', 2, NULL, 0, NULL, 0, 10000);
+CALL InsertTrxLaundry('TRX011', 'PRF001', 'PLG011', 'KSR011', 'TOK002', 'LYN001', 7, NULL, 0, NULL, 0, 17000);
+CALL InsertTrxLaundry('TRX012', 'PRF002', 'PLG012', 'KSR012', 'TOK003', 'LYN002', 4, 'LYN003', 3, NULL, 0, 15000);
+CALL InsertTrxLaundry('TRX013', 'PRF003', 'PLG013', 'KSR013', 'TOK001', 'LYN003', 8, 'LYN004', 1, NULL, 0, 20000);
+CALL InsertTrxLaundry('TRX014', 'PRF004', 'PLG014', 'KSR014', 'TOK002', 'LYN001', 6, 'LYN003', 2, NULL, 0, 19000);
+CALL InsertTrxLaundry('TRX015', 'PRF005', 'PLG015', 'KSR015', 'TOK003', 'LYN004', 3, 'LYN002', 5, 'LYN001', 2, 22000);
+CALL InsertTrxLaundry('TRX016', 'PRF001', 'PLG016', 'KSR016', 'TOK001', 'LYN001', 4, NULL, 0, NULL, 0, 12000);
+CALL InsertTrxLaundry('TRX017', 'PRF002', 'PLG017', 'KSR017', 'TOK002', 'LYN002', 10, NULL, 0, NULL, 0, 24000);
+CALL InsertTrxLaundry('TRX018', 'PRF003', 'PLG018', 'KSR018', 'TOK003', 'LYN003', 2, 'LYN001', 3, NULL, 0, 13000);
+CALL InsertTrxLaundry('TRX019', 'PRF004', 'PLG019', 'KSR019', 'TOK001', 'LYN004', 5, NULL, 0, NULL, 0, 15000);
+CALL InsertTrxLaundry('TRX020', 'PRF005', 'PLG020', 'KSR020', 'TOK002', 'LYN001', 6, 'LYN002', 3, 'LYN003', 1, 18000);
+COMMIT;
+```
+<img width="637" alt="image" src="https://github.com/user-attachments/assets/20f7efdb-a809-4674-a731-f1817f512223" />
+<img width="901" alt="image" src="https://github.com/user-attachments/assets/096d9991-b702-46ca-b7b3-c9e538bbfc88" />
+<img width="533" alt="image" src="https://github.com/user-attachments/assets/a5a55784-05b3-4ffb-bc1f-ba558e462520" />
