@@ -1,4 +1,4 @@
-# VTwoLaundry Database Schema
+<img width="620" alt="image" src="https://github.com/user-attachments/assets/6b01ec1a-0f38-412e-afca-fbe6f96de4b8" /># VTwoLaundry Database Schema
 
 Welcome to the **VTwoLaundry Database Schema** project! This repository contains the SQL scripts to create and manage the database schema for a laundry management system. The schema is designed with modularity and clarity, ensuring scalability and easy maintenance.
 
@@ -16,8 +16,7 @@ Welcome to the **VTwoLaundry Database Schema** project! This repository contains
 
 ### 1. Create the Database
 ```sql
-CREATE DATABASE VTwoLaundry CHARACTER SET utf8 COLLATE utf8_general_ci;
-USE VTwoLaundry;
+CREATE DATABASE VTwoLaundryDB CHARACTER SET utf8 COLLATE utf8_general_ci;
 ```
 
 ### 2. Create Tables
