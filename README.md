@@ -27,7 +27,7 @@ Bachelor of Informatics Engineering, Universitas Pancasila, Academic Year 2024/2
 ---
 
 ## Laundry Transaction Receipt
-![image](https://github.com/user-attachments/assets/d7a7fdf3-36f4-4b77-9026-fe7fe3d6d9e7)
+<img width="620" alt="image" src="https://github.com/user-attachments/assets/d7a7fdf3-36f4-4b77-9026-fe7fe3d6d9e7" />
 
 ---
 
